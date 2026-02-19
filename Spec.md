@@ -292,8 +292,3 @@ It demonstrates:
 - Controlled real-world action
 - Iterative improvement capability
 """
-
-output_path = "/mnt/data/spec.md"
-pypandoc.convert_text(spec_content, 'md', format='md', outputfile=output_path, extra_args=['--standalone'])
-
-output_path
