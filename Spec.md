@@ -1,7 +1,4 @@
-# Create the Markdown specification file using pypandoc
-import pypandoc
 
-spec_content = """
 # Policy-Aware Vulnerability Remediation Orchestration Agent
 
 **Course:** Applied Agentic AI (Graduate Level)  
