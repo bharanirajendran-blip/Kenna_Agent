@@ -324,10 +324,15 @@ def main() -> None:
     print("=" * 70)
     print()
 
-    input_path  = os.getenv("KENNA_INPUT_PATH", "data/kenna_input_sanitized.json")
+    # Auto-detect: use real input if it exists, else fall back to sanitized
+    real_input      = "data/kenna_input.json"
+    sanitized_input = "data/kenna_input_sanitized.json"
+    default_input   = real_input if os.path.exists(real_input) else sanitized_input
+    input_path  = os.getenv("KENNA_INPUT_PATH", default_input)
     prompt_path = os.getenv("PROMPT_PATH",      "prompt_template.md")
 
-    print(f"   Input  : {input_path}")
+    source_label = "⚠️  REAL DATA" if input_path == real_input else "✅ sanitized"
+    print(f"   Input  : {input_path}  [{source_label}]")
     print(f"   Prompt : {prompt_path}")
     print(f"   Model  : {os.getenv('OPENAI_MODEL', 'gpt-4o')}")
     print()
