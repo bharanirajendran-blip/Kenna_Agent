@@ -123,6 +123,12 @@ def main() -> None:
     fixes = fixes.dropna(subset=["Fix ID"])
     fixes["Fix ID"] = fixes["Fix ID"].astype(int)
 
+    # Normalize Fix ID in vulns too (needed for direct Fix ID join)
+    if "Fix ID" in vulns.columns:
+        vulns["Fix ID"] = pd.to_numeric(vulns["Fix ID"], errors="coerce")
+        vulns = vulns.dropna(subset=["Fix ID"])
+        vulns["Fix ID"] = vulns["Fix ID"].astype(int)
+
     # ---- Select top fixes by affected-asset count ----
     fix_sizes   = fixes.groupby("Fix ID")["Asset ID"].nunique().sort_values(ascending=False)
     selected_ids = fix_sizes.head(TOP_FIXES).index.tolist()
@@ -138,38 +144,29 @@ def main() -> None:
         all_aids = rows["Asset ID"].dropna().astype(int).unique().tolist()
         sample_aids = all_aids[:MAX_ASSETS_PER_FIX]
 
-        # CVEs
-        cves: List[str] = []
-        for s in rows.get("CVEs", pd.Series(dtype=str)).dropna().tolist():
-            cves.extend(parse_cves(str(s)))
-        cves = sorted(set(cves))
+        # Enrich from vuln table via Fix ID (reliable direct join)
+        exploit_known  = False
+        active_breach  = False
+        has_malware    = False
+        cvss_max       = 0.0
 
-        # Enrich from vuln table
-        exploit_known = False
-        cvss_max      = 0.0
+        vuln_subset = vulns[vulns["Fix ID"] == fid].copy() if "Fix ID" in vulns.columns else pd.DataFrame()
 
-        if cves:
-            vuln_col = next(
-                (c for c in vulns.columns if "vulnerability" in c.lower()),
-                None
-            )
-            if vuln_col:
-                subset = vulns[vulns[vuln_col].isin(cves)].copy()
-                if not subset.empty:
-                    exploit_col = next(
-                        (c for c in subset.columns if "exploit" in c.lower()), None
-                    )
-                    if exploit_col:
-                        exploit_known = bool(
-                            subset[exploit_col].fillna(False).astype(bool).any()
-                        )
-                    for score_col in ["CVSS V3 Score", "CVSS V2 Score",
-                                      "cvss_v3", "cvss_v2", "CVSS Score"]:
-                        if score_col in subset.columns:
-                            v = pd.to_numeric(subset[score_col], errors="coerce")
-                            mx = v.max(skipna=True)
-                            if pd.notna(mx):
-                                cvss_max = max(cvss_max, float(mx))
+        if not vuln_subset.empty:
+            if "Has Exploit" in vuln_subset.columns:
+                exploit_known = bool(vuln_subset["Has Exploit"].fillna(False).astype(bool).any())
+            if "Active Breach" in vuln_subset.columns:
+                active_breach = bool(vuln_subset["Active Breach"].fillna(False).astype(bool).any())
+            if "Has Malware" in vuln_subset.columns:
+                has_malware = bool(vuln_subset["Has Malware"].fillna(False).astype(bool).any())
+            if active_breach or has_malware:
+                exploit_known = True
+            for score_col in ["CVSS V3 Score", "CVSS V2 Score"]:
+                if score_col in vuln_subset.columns:
+                    v = pd.to_numeric(vuln_subset[score_col], errors="coerce")
+                    mx = v.max(skipna=True)
+                    if pd.notna(mx):
+                        cvss_max = max(cvss_max, float(mx))
 
         # Kenna risk score
         score_col = next(
@@ -210,6 +207,8 @@ def main() -> None:
             "kenna_score":    round(kenna_score, 2),
             "cvss":           round(cvss_max, 2),
             "exploit_known":  exploit_known,
+            "active_breach":  active_breach,
+            "has_malware":    has_malware,
             "affected_hosts": len(all_aids),
             "requires_reboot": requires_reboot,
             "assets":         asset_list,

@@ -3,26 +3,33 @@ build_real_data.py
 ==================
 Converts real Kenna CSV exports → kenna_input.json (NO anonymization).
 
+Improvements over v1:
+  - Joins Fix → Vulnerability via Fix ID column (not fragile CVE string matching)
+  - Extracts real owner_group from Asset Tags (CLAS, ITS, HPC, UITS, etc.)
+  - Uses Active Breach + Has Malware as additional exploit signals
+  - Detects requires_reboot from OS field + title keywords
+  - Environment detection from Tags + FQDN domain patterns
+
 Run this ONLY on your private workstation — do NOT commit the output JSON.
-The output file (kenna_input.json) is already in .gitignore.
+kenna_input.json is already in .gitignore.
 
 Usage:
     python data/build_real_data.py
 
-Place the 3 Kenna CSV exports in the same folder as this script (data/).
+Place the 3 Kenna CSV exports in the data/ folder before running.
 """
 
 from __future__ import annotations
 
 import json
 import re
-from typing import Dict, List, Optional
 from pathlib import Path
+from typing import Dict, List, Optional
 
 import pandas as pd
 
 # ---------------------------------------------------------------------------
-# CSV filenames — update if your export filenames differ
+# CSV paths — update if filenames differ
 # ---------------------------------------------------------------------------
 DATA_DIR = Path(__file__).parent
 
@@ -30,38 +37,55 @@ ASSET_CSV = DATA_DIR / "asset_export_20260220031753.csv"
 VULN_CSV  = DATA_DIR / "vulnerability_export_20260220032028.csv"
 FIX_CSV   = DATA_DIR / "fix_export_20260220032413.csv"
 
-
-def parse_cves(cves_str: str) -> List[str]:
-    """Kenna 'CVEs' field is space-separated."""
-    if not isinstance(cves_str, str) or not cves_str.strip():
-        return []
-    tokens = re.split(r"\s+", cves_str.strip())
-    return [t for t in tokens if t.upper().startswith("CVE-")]
+TOP_N              = 20
+MAX_ASSETS_PER_FIX = 15
 
 
-def pick_hostname(asset_row: pd.Series) -> str:
-    """Prefer FQDN, fall back to Hostname, then ID."""
-    fqdn = asset_row.get("FQDN")
-    if isinstance(fqdn, str) and fqdn.strip():
-        return fqdn.strip()
-    hn = asset_row.get("Hostname")
-    if isinstance(hn, str) and hn.strip():
-        return hn.strip()
-    return str(asset_row.get("ID"))
+# ---------------------------------------------------------------------------
+# Owner group extraction from Tags
+# Priority order: first match wins
+# ---------------------------------------------------------------------------
+OWNER_TAG_MAP = [
+    (r"\bHPC\b",                          "HPC Team"),
+    (r"ITS Managed Windows",              "ITS Windows Team"),
+    (r"ITS VMware",                       "ITS VMware Team"),
+    (r"\bCLAS\b",                         "CLAS Team"),
+    (r"\bUITS\b",                         "UITS Team"),
+    (r"\bITS\b",                          "ITS Team"),
+    (r"\bInfoSec\b",                      "InfoSec Team"),
+    (r"\bLibrary\b",                      "Library IT Team"),
+    (r"\bHealth\b|\bUCONN Health\b",      "UConn Health IT"),
+    (r"\bAthletics\b",                    "Athletics IT"),
+]
+
+def extract_owner_group(tags: str, owner: str) -> str:
+    """Derive owner_group from Tags field using priority mapping."""
+    text = str(tags or "")
+    for pattern, group in OWNER_TAG_MAP:
+        if re.search(pattern, text, re.IGNORECASE):
+            return group
+    # Fall back to Owner field if present
+    if isinstance(owner, str) and owner.strip():
+        return owner.strip()
+    return "Windows Management Team"
 
 
-def infer_environment_from_tags(tags: str) -> str:
-    """Heuristic from tags. Replace with Jira Assets integration later."""
-    if not isinstance(tags, str):
-        return "production"
-    t = tags.lower()
-    if any(x in t for x in ["non-prod", "nonprod", "dev", "test", "qa", "stage"]):
+# ---------------------------------------------------------------------------
+# Environment detection
+# ---------------------------------------------------------------------------
+def detect_environment(fqdn: str, hostname: str, tags: str) -> str:
+    """Detect prod vs non-prod from FQDN, hostname, and tags."""
+    combined = f"{fqdn} {hostname} {tags}".lower()
+    if any(x in combined for x in ["non-prod", "nonprod", "dev", "test",
+                                    "qa", "stage", "uat", "sandbox"]):
         return "non-production"
     return "production"
 
 
-def infer_criticality_from_priority(priority: Optional[float]) -> str:
-    """Map Kenna priority (1-10) to high/medium/low."""
+# ---------------------------------------------------------------------------
+# Criticality from asset Priority (1–10 scale in Kenna)
+# ---------------------------------------------------------------------------
+def asset_criticality(priority) -> str:
     try:
         p = float(priority)
     except Exception:
@@ -73,105 +97,176 @@ def infer_criticality_from_priority(priority: Optional[float]) -> str:
     return "low"
 
 
-def compute_fix_enrichment(
-    fix_id: int,
-    fix_rows: pd.DataFrame,
-    assets_df: pd.DataFrame,
-    vulns_df: pd.DataFrame,
-) -> Dict:
-    """Build one Fix object for the agent input."""
+# ---------------------------------------------------------------------------
+# Requires-reboot heuristic
+# ---------------------------------------------------------------------------
+REBOOT_KEYWORDS = [
+    "kernel", "windows update", "security update", r"\bkb\d{6,7}\b",
+    "reboot", "restart required", "glibc", "libc",
+]
 
-    title = str(fix_rows["Title"].iloc[0])
-
-    # Affected hosts
-    asset_ids = fix_rows["Asset ID"].dropna().astype(int).unique().tolist()
-    affected_hosts = len(asset_ids)
-
-    # CVEs
-    cves = []
-    for s in fix_rows["CVEs"].dropna().tolist():
-        cves.extend(parse_cves(str(s)))
-    cves = sorted(set(cves))
-
-    # Enrich from vulnerability export
-    exploit_known = False
-    cvss_max = 0.0
-    if cves:
-        subset = vulns_df[vulns_df["Vulnerability"].isin(cves)].copy()
-        if not subset.empty:
-            if "Has Exploit" in subset.columns:
-                exploit_known = bool(subset["Has Exploit"].fillna(False).astype(bool).any())
-            candidates = []
-            if "CVSS V3 Score" in subset.columns:
-                candidates.append(pd.to_numeric(subset["CVSS V3 Score"], errors="coerce"))
-            if "CVSS V2 Score" in subset.columns:
-                candidates.append(pd.to_numeric(subset["CVSS V2 Score"], errors="coerce"))
-            if candidates:
-                cvss_max = float(pd.concat(candidates).max(skipna=True) or 0.0)
-
-    # Kenna score from fix export
-    highest_vuln_score = pd.to_numeric(fix_rows.get("Highest Vuln Score"), errors="coerce")
-    kenna_score = float(highest_vuln_score.max(skipna=True) or 0.0)
-
-    # Build assets list (real hostnames — keep private)
-    assets_subset = assets_df[assets_df["ID"].isin(asset_ids)].copy()
-    assets_list = []
-    for _, arow in assets_subset.iterrows():
-        tags = arow.get("Tags", "")
-        assets_list.append({
-            "hostname":    pick_hostname(arow),
-            "owner_group": "Windows Management Team",  # update with Jira Assets later
-            "environment": infer_environment_from_tags(tags),
-            "criticality": infer_criticality_from_priority(arow.get("Priority")),
-        })
-
-    # requires_reboot: Phase 1 default False (no reliable signal yet)
-    requires_reboot = False
-
-    return {
-        "fix_title":      title,
-        "kenna_score":    round(kenna_score, 2),
-        "cvss":           round(cvss_max, 2),
-        "exploit_known":  exploit_known,
-        "affected_hosts": affected_hosts,
-        "requires_reboot": requires_reboot,
-        "assets":         assets_list,
-    }
+def needs_reboot(title: str, os_field: str) -> bool:
+    text = f"{title} {os_field}".lower()
+    return any(re.search(kw, text) for kw in REBOOT_KEYWORDS)
 
 
-def main(asset_group_name: str = "Kenna Export (Phase 1)", top_n: int = 20) -> None:
-    print("📥 Loading Kenna exports...")
+# ---------------------------------------------------------------------------
+# Pick best hostname
+# ---------------------------------------------------------------------------
+def pick_hostname(row: pd.Series) -> str:
+    for col in ("FQDN", "Hostname", "IP Address"):
+        val = row.get(col)
+        if isinstance(val, str) and val.strip():
+            return val.strip()
+    return str(row.get("ID", "unknown"))
+
+
+# ---------------------------------------------------------------------------
+# Main builder
+# ---------------------------------------------------------------------------
+def main() -> None:
+    print("=" * 60)
+    print("  Kenna Real Data Builder  (no anonymization)")
+    print("=" * 60)
+
+    print("\n📥 Loading CSVs...")
     assets_df = pd.read_csv(ASSET_CSV)
-    vulns_df  = pd.read_csv(VULN_CSV, low_memory=False)
+    vulns_df  = pd.read_csv(VULN_CSV,  low_memory=False)
     fixes_df  = pd.read_csv(FIX_CSV)
 
     print(f"   Assets: {len(assets_df)}  Vulns: {len(vulns_df)}  Fixes: {len(fixes_df)}")
 
-    fixes_df["Fix ID"] = pd.to_numeric(fixes_df["Fix ID"], errors="coerce")
+    # ---- Normalize Fix ID across all three CSVs ----
+    for df in (fixes_df, vulns_df):
+        df["Fix ID"] = pd.to_numeric(df["Fix ID"], errors="coerce")
     fixes_df = fixes_df.dropna(subset=["Fix ID"])
     fixes_df["Fix ID"] = fixes_df["Fix ID"].astype(int)
+    vulns_df = vulns_df.dropna(subset=["Fix ID"])
+    vulns_df["Fix ID"] = vulns_df["Fix ID"].astype(int)
 
-    # Top N fixes by affected host count
-    fix_sizes      = fixes_df.groupby("Fix ID")["Asset ID"].nunique().sort_values(ascending=False)
-    selected_ids   = fix_sizes.head(top_n).index.tolist()
+    # ---- Normalize Asset ID ----
+    fixes_df["Asset ID"] = pd.to_numeric(fixes_df["Asset ID"], errors="coerce")
+    if "Asset ID" in vulns_df.columns:
+        vulns_df["Asset ID"] = pd.to_numeric(vulns_df["Asset ID"], errors="coerce")
+    assets_df["ID"] = pd.to_numeric(assets_df["ID"], errors="coerce")
 
-    print(f"\n🔍 Building {top_n} fixes...\n")
-    fixes_out = []
+    # ---- Select top N fixes by unique affected assets ----
+    fix_sizes    = fixes_df.groupby("Fix ID")["Asset ID"].nunique().sort_values(ascending=False)
+    selected_ids = fix_sizes.head(TOP_N).index.tolist()
+
+    print(f"\n🔍 Building top {TOP_N} fixes...\n")
+    out_fixes = []
+
     for fid in selected_ids:
-        rows = fixes_df[fixes_df["Fix ID"] == fid]
-        fix  = compute_fix_enrichment(fid, rows, assets_df, vulns_df)
-        fixes_out.append(fix)
-        print(f"  ✅ {fix['fix_title'][:60]}  (hosts={fix['affected_hosts']})")
+        fix_rows = fixes_df[fixes_df["Fix ID"] == fid].copy()
+        title    = str(fix_rows["Title"].iloc[0])
 
-    payload = {"asset_group": asset_group_name, "fixes": fixes_out}
+        # Affected host count (all assets in fix export)
+        asset_ids_all = fix_rows["Asset ID"].dropna().astype(int).unique().tolist()
+        affected_hosts = len(asset_ids_all)
+
+        # ── Vulnerability enrichment via Fix ID join (reliable!) ──────────
+        vuln_rows = vulns_df[vulns_df["Fix ID"] == fid].copy()
+
+        exploit_known  = False
+        active_breach  = False
+        has_malware    = False
+        cvss_max       = 0.0
+
+        if not vuln_rows.empty:
+            # Exploit flag
+            if "Has Exploit" in vuln_rows.columns:
+                exploit_known = bool(vuln_rows["Has Exploit"].fillna(False).astype(bool).any())
+
+            # Active breach flag (stronger signal than exploit)
+            if "Active Breach" in vuln_rows.columns:
+                active_breach = bool(vuln_rows["Active Breach"].fillna(False).astype(bool).any())
+
+            # Malware flag
+            if "Has Malware" in vuln_rows.columns:
+                has_malware = bool(vuln_rows["Has Malware"].fillna(False).astype(bool).any())
+
+            # If active breach or malware, treat as exploit_known
+            if active_breach or has_malware:
+                exploit_known = True
+
+            # CVSS: prefer V3, fallback V2
+            for col in ("CVSS V3 Score", "CVSS V2 Score"):
+                if col in vuln_rows.columns:
+                    v = pd.to_numeric(vuln_rows[col], errors="coerce")
+                    mx = v.max(skipna=True)
+                    if pd.notna(mx) and float(mx) > cvss_max:
+                        cvss_max = float(mx)
+
+        # ── Kenna score from fix export ───────────────────────────────────
+        hvs_col = next((c for c in fix_rows.columns
+                        if "highest vuln score" in c.lower()), None)
+        kenna_score = 0.0
+        if hvs_col:
+            v = pd.to_numeric(fix_rows[hvs_col], errors="coerce")
+            kenna_score = float(v.max(skipna=True) or 0.0)
+
+        # ── OS for reboot detection ───────────────────────────────────────
+        os_col = next((c for c in fix_rows.columns
+                       if c.lower() == "operating system"), None)
+        os_val = str(fix_rows[os_col].iloc[0]) if os_col else ""
+
+        requires_reboot_flag = needs_reboot(title, os_val)
+
+        # ── Asset details (sampled) ───────────────────────────────────────
+        sample_ids    = asset_ids_all[:MAX_ASSETS_PER_FIX]
+        assets_subset = assets_df[assets_df["ID"].isin(sample_ids)].copy()
+
+        asset_list = []
+        for _, arow in assets_subset.iterrows():
+            tags  = str(arow.get("Tags", "") or "")
+            owner = str(arow.get("Owner", "") or "")
+            fqdn  = str(arow.get("FQDN",  "") or "")
+            hn    = str(arow.get("Hostname", "") or "")
+
+            asset_list.append({
+                "hostname":    pick_hostname(arow),
+                "owner_group": extract_owner_group(tags, owner),
+                "environment": detect_environment(fqdn, hn, tags),
+                "criticality": asset_criticality(arow.get("Priority")),
+            })
+
+        out_fixes.append({
+            "fix_title":      title,
+            "kenna_score":    round(kenna_score, 2),
+            "cvss":           round(cvss_max, 2),
+            "exploit_known":  exploit_known,
+            "active_breach":  active_breach,
+            "has_malware":    has_malware,
+            "affected_hosts": affected_hosts,
+            "requires_reboot": requires_reboot_flag,
+            "assets":         asset_list,
+        })
+
+        flags = []
+        if exploit_known:  flags.append("💥exploit")
+        if active_breach:  flags.append("🔥breach")
+        if has_malware:    flags.append("☠️malware")
+        flag_str = " ".join(flags) or "  clean"
+
+        print(f"  [{len(out_fixes):02d}] {title[:52]}")
+        print(f"       hosts={affected_hosts}  kenna={kenna_score:.0f}"
+              f"  cvss={cvss_max:.1f}  reboot={requires_reboot_flag}  {flag_str}")
+
+    payload = {
+        "asset_group": "Kenna Export (Phase 1)",
+        "fixes": out_fixes,
+    }
 
     out_path = DATA_DIR / "kenna_input.json"
     out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    print(f"\n✅ Wrote {out_path}")
-    print(f"   ⚠️  Do NOT commit kenna_input.json — it contains real hostnames!")
-    print(f"   Run: OPENAI_API_KEY=sk-... python agent/run_agent.py")
+    print(f"\n✅ Wrote: {out_path}")
+    print(f"   Fixes:  {len(out_fixes)}")
+    print(f"   ⚠️  kenna_input.json contains real hostnames — do NOT commit!")
+    print(f"\n   Run agent:")
+    print(f"   OPENAI_API_KEY=sk-... python3 agent/run_agent.py")
 
 
 if __name__ == "__main__":
-    main(asset_group_name="Kenna Export (Phase 1)", top_n=20)
+    main()

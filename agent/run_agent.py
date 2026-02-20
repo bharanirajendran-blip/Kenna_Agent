@@ -51,6 +51,8 @@ class Fix(BaseModel):
     kenna_score:    float = Field(ge=0, le=100)
     cvss:           float = Field(ge=0, le=10)
     exploit_known:  bool
+    active_breach:  bool  = False   # optional: set by build_real_data.py
+    has_malware:    bool  = False   # optional: set by build_real_data.py
     affected_hosts: int   = Field(ge=0)
     requires_reboot: bool
     assets:         List[Asset] = Field(default_factory=list)

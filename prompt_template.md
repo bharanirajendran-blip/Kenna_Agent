@@ -48,7 +48,10 @@ Round priority_score to 2 decimal places.
 ## Priority Level Assignment
 
 ⚠️ RULE 1 (OVERRIDE — applies regardless of score):
-If exploit_known = true AND any sampled asset has environment = "production" → priority_level = "High"
+Any of the following → priority_level = "High":
+- exploit_known = true AND any sampled asset has environment = "production"
+- active_breach = true (active breach detected — always High)
+- has_malware = true (malware associated — always High)
 This rule takes precedence over the score thresholds below.
 
 RULE 2 (score-based):
@@ -147,10 +150,10 @@ The "report" field must be a single markdown string (use \n for newlines).
 
 Every fix entry justification must follow this exact pattern:
 
-"{affected_hosts} hosts affected across {production_count} production asset(s) sampled. Kenna score {kenna_score}, CVSS {cvss}. {Exploit known / No exploit known}. {One specific risk implication from these numbers only.}"
+"{affected_hosts} hosts affected across {production_count} production asset(s) sampled. Kenna score {kenna_score}, CVSS {cvss}. {Exploit known / No exploit known}. {Active breach: yes/no if field present}. {One specific risk implication from these numbers only.}"
 
 Example of GOOD justification:
-"587 hosts affected across 15 production asset(s) sampled. Kenna score 85.0, CVSS 10.0. Exploit known. Largest attack surface of all High priority fixes — broad production exposure with active exploit."
+"587 hosts affected across 15 production asset(s) sampled. Kenna score 85.0, CVSS 10.0. Exploit known. Active breach: yes. Largest attack surface of all High priority fixes — broad production exposure with active exploit and confirmed breach activity."
 
 Example of BAD justification (do not use):
 "This fix is critical due to a high Kenna score and known exploits affecting production environments."
@@ -223,7 +226,7 @@ Count High + Medium fixes first, confirm that many entries follow.
 - **Owner Group:** {owner_group}
 - **Priority Level:** {priority_level}
 - **Change Window Required:** {true / false}
-- **Evidence (from input only):** kenna_score={kenna_score}, cvss={cvss}, exploit_known={true/false}, affected_hosts={affected_hosts}
+- **Evidence (from input only):** kenna_score={kenna_score}, cvss={cvss}, exploit_known={true/false}, active_breach={true/false if present}, has_malware={true/false if present}, affected_hosts={affected_hosts}
 - **Verification (Read-only):** {1 sentence referencing a specific check implied by the data — no invented commands}
 - **Future Automation Hook (Phase 2):** AAP Job Template: <TBD>
 
