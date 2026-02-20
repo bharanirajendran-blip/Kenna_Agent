@@ -207,6 +207,7 @@ def node_reason_llm(state: AgentState) -> AgentState:
     state.audit.append({
         "step":        "reason_start",
         "ts":          _now(),
+        "provider":    "openai",
         "model":       model_name,
         "temperature": temperature,
     })
