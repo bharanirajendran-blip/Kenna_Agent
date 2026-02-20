@@ -6,6 +6,8 @@
       "kenna_score": 26.0,
       "cvss": 2.1,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 598,
       "requires_reboot": false,
       "assets": [
@@ -106,6 +108,8 @@
       "kenna_score": 85.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 587,
       "requires_reboot": false,
       "assets": [
@@ -206,6 +210,8 @@
       "kenna_score": 37.0,
       "cvss": 2.6,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 397,
       "requires_reboot": false,
       "assets": [
@@ -306,6 +312,8 @@
       "kenna_score": 45.0,
       "cvss": 7.8,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 363,
       "requires_reboot": true,
       "assets": [
@@ -406,6 +414,8 @@
       "kenna_score": 19.0,
       "cvss": 0.0,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 329,
       "requires_reboot": false,
       "assets": [
@@ -506,6 +516,8 @@
       "kenna_score": 25.0,
       "cvss": 6.6,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 305,
       "requires_reboot": false,
       "assets": [
@@ -606,6 +618,8 @@
       "kenna_score": 11.0,
       "cvss": 3.6,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 293,
       "requires_reboot": false,
       "assets": [
@@ -706,6 +720,8 @@
       "kenna_score": 25.0,
       "cvss": 5.1,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 195,
       "requires_reboot": false,
       "assets": [
@@ -806,6 +822,8 @@
       "kenna_score": 51.0,
       "cvss": 7.8,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 150,
       "requires_reboot": false,
       "assets": [
@@ -906,6 +924,8 @@
       "kenna_score": 100.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": true,
+      "has_malware": true,
       "affected_hosts": 142,
       "requires_reboot": false,
       "assets": [
@@ -1006,6 +1026,8 @@
       "kenna_score": 54.0,
       "cvss": 9.0,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 137,
       "requires_reboot": false,
       "assets": [
@@ -1106,6 +1128,8 @@
       "kenna_score": 51.0,
       "cvss": 7.8,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 119,
       "requires_reboot": false,
       "assets": [
@@ -1206,6 +1230,8 @@
       "kenna_score": 42.0,
       "cvss": 7.5,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 116,
       "requires_reboot": false,
       "assets": [
@@ -1306,6 +1332,8 @@
       "kenna_score": 28.0,
       "cvss": 6.5,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 116,
       "requires_reboot": false,
       "assets": [
@@ -1406,6 +1434,8 @@
       "kenna_score": 79.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 104,
       "requires_reboot": false,
       "assets": [
@@ -1506,6 +1536,8 @@
       "kenna_score": 74.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 92,
       "requires_reboot": false,
       "assets": [
@@ -1606,6 +1638,8 @@
       "kenna_score": 56.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 87,
       "requires_reboot": false,
       "assets": [
@@ -1706,6 +1740,8 @@
       "kenna_score": 45.0,
       "cvss": 7.1,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 65,
       "requires_reboot": true,
       "assets": [
@@ -1806,6 +1842,8 @@
       "kenna_score": 51.0,
       "cvss": 8.4,
       "exploit_known": false,
+      "active_breach": false,
+      "has_malware": false,
       "affected_hosts": 64,
       "requires_reboot": false,
       "assets": [
@@ -1906,6 +1944,8 @@
       "kenna_score": 100.0,
       "cvss": 10.0,
       "exploit_known": true,
+      "active_breach": true,
+      "has_malware": true,
       "affected_hosts": 62,
       "requires_reboot": false,
       "assets": [
