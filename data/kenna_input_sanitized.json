@@ -1,0 +1,585 @@
+{
+  "asset_group": "Windows Servers (Sanitized Dataset)",
+  "fixes": [
+    {
+      "fix_title": "ICMP Timestamp Request Remote Date Disclosure",
+      "kenna_score": 26.0,
+      "cvss": 2.1,
+      "exploit_known": true,
+      "affected_hosts": 598,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-b80bd1859c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-db6104a035.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-e238d1ba5e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-d3e3736c6c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-dd7e701a82.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-d0ba6c45a3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-8fd1b4e15d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-c66beb36bf.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        }
+      ]
+    },
+    {
+      "fix_title": "Attention Required: vulnerabilities in Openssl",
+      "kenna_score": 85.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 587,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-8645ee72d3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fa54a210f7.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7d5842ab91.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a06ce19d59.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b4b44fb7f1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-8c3179c35f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-39996c0905.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-c24f93c612.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "SSH Server CBC Mode Ciphers Enabled",
+      "kenna_score": 37.0,
+      "cvss": 2.6,
+      "exploit_known": true,
+      "affected_hosts": 397,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-b80bd1859c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-c36d8e7d9c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-e238d1ba5e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-830918fd08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-06334e8feb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 8 : kernel (RHSA-2026:2720)",
+      "kenna_score": 45.0,
+      "cvss": 7.8,
+      "exploit_known": false,
+      "affected_hosts": 363,
+      "requires_reboot": true,
+      "assets": [
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-9d7ace6a72.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-c36d8e7d9c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-830918fd08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-1517e6d281.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "RPC portmapper Service Detection",
+      "kenna_score": 19.0,
+      "cvss": 0.0,
+      "exploit_known": false,
+      "affected_hosts": 329,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-b80bd1859c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-f091c8de19.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-e238d1ba5e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-eb9ea01b77.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-8fd1b4e15d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-78452016a4.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-02b27505a2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        }
+      ]
+    },
+    {
+      "fix_title": "Vim < 9.1.2132 Buffer Overflow (GHSA-5w93-4g67-mm43)",
+      "kenna_score": 25.0,
+      "cvss": 6.6,
+      "exploit_known": false,
+      "affected_hosts": 305,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-c7e0150f0e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-b80bd1859c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-db6104a035.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e238d1ba5e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-8fd1b4e15d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "OpenSSH < 10.1 / 10.1p1 RCE",
+      "kenna_score": 11.0,
+      "cvss": 3.6,
+      "exploit_known": false,
+      "affected_hosts": 293,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-0cfdc28820.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-04578c4479.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-79ab6ae0c3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-ffd83dec7c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-db6104a035.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-700cc08771.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-f353ff9101.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-a18c825dff.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        }
+      ]
+    },
+    {
+      "fix_title": "Apache Log4j 2.0-beta9 < 2.25.3 MitM",
+      "kenna_score": 25.0,
+      "cvss": 5.1,
+      "exploit_known": false,
+      "affected_hosts": 195,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-9c6244d91c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-9d7ace6a72.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-849cfc3486.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-1517e6d281.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-488ae89004.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-1f0d606e1b.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-9ab79e09a0.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 8 : brotli (RHSA-2026:2389)",
+      "kenna_score": 51.0,
+      "cvss": 7.8,
+      "exploit_known": false,
+      "affected_hosts": 150,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-04499dd10b.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-c36d8e7d9c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-61f4b43ca8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e38ea5b4b8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-5ab37ca6c3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "Attention Required: vulnerabilities in Apache Log4j",
+      "kenna_score": 100.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 142,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-ff2bf3b017.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-ad0b8cadd2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-5a86dc9177.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-206d488bd5.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a3a344b6fc.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-38496b3703.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-24a98f3c01.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7d5842ab91.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    }
+  ]
+}
