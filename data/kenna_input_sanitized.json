@@ -22,6 +22,12 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-728238fc2c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-e238d1ba5e.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
@@ -29,6 +35,18 @@
         },
         {
           "hostname": "host-d3e3736c6c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-8d65bfa281.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-ba77814bbd.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -52,7 +70,31 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-9f7633ad27.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-c66beb36bf.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-3ce57c1f00.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-10732d466a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-4744f805ea.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -74,6 +116,24 @@
           "criticality": "high"
         },
         {
+          "hostname": "host-3b3590c775.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-d923697c37.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-2fbd4bb4f0.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
           "hostname": "host-fa54a210f7.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "non-production",
@@ -86,13 +146,37 @@
           "criticality": "high"
         },
         {
+          "hostname": "host-7cf0047865.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fd9d95da34.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
           "hostname": "host-a06ce19d59.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "high"
         },
         {
+          "hostname": "host-068da38552.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
           "hostname": "host-b4b44fb7f1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-6c8c1088d1.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "high"
@@ -138,6 +222,12 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-04499dd10b.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-c36d8e7d9c.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
@@ -156,7 +246,31 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-61f4b43ca8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-06334e8feb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-59f92ddb1f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-5ab37ca6c3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-78452016a4.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -168,7 +282,19 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-047fc2d04e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-02b27505a2.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -190,6 +316,18 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-9c6244d91c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d7b2a7f40.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-9d7ace6a72.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
@@ -208,13 +346,43 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-849cfc3486.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-6d8862623c.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
         },
         {
+          "hostname": "host-06334e8feb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e68ec4ead5.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-1517e6d281.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-488ae89004.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-1f0d606e1b.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
@@ -242,7 +410,19 @@
       "requires_reboot": false,
       "assets": [
         {
+          "hostname": "host-8950fbbb88.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-b80bd1859c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-42248ed38a.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -260,9 +440,27 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-29da3b6cf9.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-df682ebc69.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-eb9ea01b77.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-9358db67b1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
           "criticality": "low"
         },
         {
@@ -279,6 +477,18 @@
         },
         {
           "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-ed2a8f54e6.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-b490cb14e8.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -318,6 +528,18 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-98564cf92f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-c36d8e7d9c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-db6104a035.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
@@ -336,13 +558,43 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-06334e8feb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-8fd1b4e15d.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
         },
         {
+          "hostname": "host-5ab37ca6c3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-047fc2d04e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-50de82b467.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
@@ -357,6 +609,12 @@
       "affected_hosts": 293,
       "requires_reboot": false,
       "assets": [
+        {
+          "hostname": "host-fd748e1fa5.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
         {
           "hostname": "host-0cfdc28820.example.internal",
           "owner_group": "Windows Management Team",
@@ -394,7 +652,43 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-2738977810.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-182c85dab1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-10dac28b03.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-f353ff9101.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-5111d5e98c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-b457b013f8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-7b8e5ba257.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -422,13 +716,37 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-6d7b2a7f40.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-9d7ace6a72.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
         },
         {
+          "hostname": "host-520fe100cb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-849cfc3486.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-67cdf7609c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-e68ec4ead5.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -452,6 +770,12 @@
           "criticality": "low"
         },
         {
+          "hostname": "host-1e5f7eca81.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
           "hostname": "host-2de62c6701.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
@@ -459,6 +783,18 @@
         },
         {
           "hostname": "host-9ab79e09a0.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-b490cb14e8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "low"
+        },
+        {
+          "hostname": "host-b0f19b4696.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "low"
@@ -473,6 +809,18 @@
       "affected_hosts": 150,
       "requires_reboot": false,
       "assets": [
+        {
+          "hostname": "host-8ddd685960.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-8950fbbb88.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
         {
           "hostname": "host-0fc1d93313.example.internal",
           "owner_group": "Windows Management Team",
@@ -492,7 +840,25 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-814e6c984e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-f091c8de19.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-61f4b43ca8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-eb9ea01b77.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
@@ -516,7 +882,19 @@
           "criticality": "medium"
         },
         {
+          "hostname": "host-78452016a4.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
           "hostname": "host-473a9100d2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-02b27505a2.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "medium"
@@ -568,13 +946,1055 @@
           "criticality": "high"
         },
         {
+          "hostname": "host-ea19d4e368.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-eb5b442585.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
           "hostname": "host-24a98f3c01.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "high"
         },
         {
+          "hostname": "host-ff179aefb7.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a4e940bef6.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e116d84cbf.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
           "hostname": "host-7d5842ab91.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-805bb2b8af.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a40b5223ff.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 8 : libsoup (RHSA-2026:2215)",
+      "kenna_score": 54.0,
+      "cvss": 9.0,
+      "exploit_known": false,
+      "affected_hosts": 137,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-8ddd685960.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b0734e6692.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e8d344fd43.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-04499dd10b.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-c36d8e7d9c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-814e6c984e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fd6ba50aa5.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fa3453f299.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e38ea5b4b8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e2add4e25d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-3cb9c4333a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7906eb407e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-3e82591149.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-5ab37ca6c3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 8 : git-lfs (RHSA-2026:2323)",
+      "kenna_score": 51.0,
+      "cvss": 7.8,
+      "exploit_known": false,
+      "affected_hosts": 119,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-07c3323c73.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e506d73b08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-93987b8371.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-4cc85457b9.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-ac207cd370.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-fe70f5f04c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-9a74f57486.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-5c520748f7.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-78b22e55fb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-9137d95eda.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-bf4f8c537a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-4809663ce2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-1820966012.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-2478b88a81.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-f94d61cdc8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "Ruby REXML 3.3.3 < 3.4.2 DoS vulnerability",
+      "kenna_score": 42.0,
+      "cvss": 7.5,
+      "exploit_known": false,
+      "affected_hosts": 116,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-c7e0150f0e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-624023084a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-3adaabfadb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-104011c19f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-98564cf92f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-acf5545589.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-d0ba6c45a3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-71f1736b08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-b433cf7d34.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-57a99f1d0d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e4199b0fed.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-50de82b467.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "Ruby WEBrick < 1.8.2 HTTP Request Smuggling",
+      "kenna_score": 28.0,
+      "cvss": 6.5,
+      "exploit_known": false,
+      "affected_hosts": 116,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-c7e0150f0e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-624023084a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-0fc1d93313.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-3adaabfadb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-104011c19f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-acf5545589.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-db6104a035.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-6d8862623c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-d0ba6c45a3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-71f1736b08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-b433cf7d34.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-57a99f1d0d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-2de62c6701.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e4199b0fed.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-50de82b467.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "Update Splunk Universal Forwarder",
+      "kenna_score": 79.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 104,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-b6d16927a1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-2e75a5f134.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-ea19d4e368.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-eb5b442585.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-24a98f3c01.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-24fe0df538.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-c4551fa021.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e2d9765d85.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fcc8c63acd.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7b24fbb512.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-f32318d418.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b58185d5cf.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-04452468fa.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-6896250e17.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a40b5223ff.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "Update Python",
+      "kenna_score": 74.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 92,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-538b04845d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-833b53c079.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-9c3d88d627.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-1ff3a54ca4.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-4c901fa279.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e68b766af2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-caa8950115.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7b796d83c7.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a9da29fd1c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-24a98f3c01.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-236498e7b1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-549d9ac98c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-823e8c6b8f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-7903dc27ae.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-4fa4e50bd2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "Update Microsoft .net",
+      "kenna_score": 56.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 87,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-4d9875defc.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-49f59a3890.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-2e75a5f134.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-d1cdbe9f49.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-127fcc8ee1.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-ed8102e174.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-ea19d4e368.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-ddd46152c8.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e2d9765d85.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-24f8d11e90.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-f527bb3ab2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-f31524b657.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-f06acbe7fd.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a166ca0076.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-0a3871bbf3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 9 : kernel (RHSA-2026:2722)",
+      "kenna_score": 45.0,
+      "cvss": 7.1,
+      "exploit_known": false,
+      "affected_hosts": 65,
+      "requires_reboot": true,
+      "assets": [
+        {
+          "hostname": "host-c7e0150f0e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-624023084a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-3adaabfadb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-104011c19f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-98564cf92f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-262d50b12c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-acf5545589.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-d0ba6c45a3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-71f1736b08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-b433cf7d34.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-57a99f1d0d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-e4199b0fed.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-cd99328a79.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-d3d3f01168.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        },
+        {
+          "hostname": "host-50de82b467.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "medium"
+        }
+      ]
+    },
+    {
+      "fix_title": "RHEL 9 : glibc (RHSA-2026:2786)",
+      "kenna_score": 51.0,
+      "cvss": 8.4,
+      "exploit_known": false,
+      "affected_hosts": 64,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-c7e0150f0e.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-624023084a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-3adaabfadb.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-104011c19f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-98564cf92f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-262d50b12c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-acf5545589.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-d0ba6c45a3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-71f1736b08.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b433cf7d34.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-57a99f1d0d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e4199b0fed.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-cd99328a79.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-d3d3f01168.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-50de82b467.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        }
+      ]
+    },
+    {
+      "fix_title": "Attention Required: vulnerabilities in Apache Tomcat",
+      "kenna_score": 100.0,
+      "cvss": 10.0,
+      "exploit_known": true,
+      "affected_hosts": 62,
+      "requires_reboot": false,
+      "assets": [
+        {
+          "hostname": "host-8645ee72d3.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-3b3590c775.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-a3dc67993a.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b2b8f8d855.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-5a3014b81b.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e3afdaaf1d.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-e9cce09a2c.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-fa54a210f7.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-b698cabad2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-c4551fa021.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-8456559eb2.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-0447a92a12.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-068da38552.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-8c3179c35f.example.internal",
+          "owner_group": "Windows Management Team",
+          "environment": "non-production",
+          "criticality": "high"
+        },
+        {
+          "hostname": "host-f7e3b631ec.example.internal",
           "owner_group": "Windows Management Team",
           "environment": "production",
           "criticality": "high"
