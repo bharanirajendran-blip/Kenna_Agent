@@ -47,15 +47,14 @@ Round priority_score to 2 decimal places.
 
 ## Priority Level Assignment
 
-High priority if ANY of the following:
-- exploit_known = true AND any sampled asset environment = "production"
-- priority_score >= 0.80
+⚠️ RULE 1 (OVERRIDE — applies regardless of score):
+If exploit_known = true AND any sampled asset has environment = "production" → priority_level = "High"
+This rule takes precedence over the score thresholds below.
 
-Medium priority if:
-- priority_score >= 0.55 AND not already High
-
-Low priority:
-- Everything else
+RULE 2 (score-based):
+- priority_score >= 0.80 → "High"
+- priority_score >= 0.55 AND not already High → "Medium"
+- Everything else → "Low"
 
 ---
 
@@ -74,16 +73,15 @@ Base = 0.45
 + 0.10 if any sampled asset environment = "production"
 + 0.10 if affected_hosts >= 20
 
-Cap maximum confidence at 0.95.
-Round to 2 decimal places.
+Cap maximum confidence at 0.95. Round to 2 decimal places.
 
 ---
 
 ## Estimated Risk Reduction
 
-"high" → if high_priority_fixes >= 30% of total_fixes
+"high"     → if high_priority_fixes >= 30% of total_fixes
 "moderate" → if high_priority_fixes >= 10% of total_fixes
-"low" → otherwise
+"low"      → otherwise
 
 ---
 
@@ -105,6 +103,7 @@ Rules:
 - NO comments inside JSON
 - All enumerations must match exactly (case-sensitive)
 - prioritized_fixes MUST be sorted by priority_score descending
+- prioritized_fixes MUST contain ALL fixes from input — never truncate
 
 JSON Schema:
 
@@ -135,7 +134,30 @@ JSON Schema:
 
 # REPORT FORMAT
 
-The "report" field must be a single markdown string (use \n for newlines):
+The "report" field must be a single markdown string (use \n for newlines).
+
+⚠️ COMPLETENESS RULES — violations will cause validation failure:
+1. Priority Fixes section MUST have exactly one entry per fix in the input — no truncation, no summarizing
+2. Action Packet section MUST have one entry for every High and Medium fix — count them first, then write that many entries
+3. Each justification MUST cite specific numbers from the input data (not generic descriptions)
+
+---
+
+## Justification Template (MANDATORY FORMAT)
+
+Every fix entry justification must follow this exact pattern:
+
+"{affected_hosts} hosts affected across {production_count} production asset(s) sampled. Kenna score {kenna_score}, CVSS {cvss}. {Exploit known / No exploit known}. {One specific risk implication from these numbers only.}"
+
+Example of GOOD justification:
+"587 hosts affected across 15 production asset(s) sampled. Kenna score 85.0, CVSS 10.0. Exploit known. Largest attack surface of all High priority fixes — broad production exposure with active exploit."
+
+Example of BAD justification (do not use):
+"This fix is critical due to a high Kenna score and known exploits affecting production environments."
+
+---
+
+## Report Structure
 
 # Vulnerability Remediation Report
 
@@ -146,13 +168,13 @@ The "report" field must be a single markdown string (use \n for newlines):
 **High Priority Fixes:** {high_priority_fixes}
 **Estimated Risk Reduction:** {estimated_risk_reduction}
 
-Provide 2–3 sentences summarizing overall risk posture and primary action.
+2–3 sentences: state the count of High/Medium/Low fixes, total hosts affected, and the single most urgent action required.
 
 ---
 
 ## Priority Fixes
 
-For each fix (sorted highest first):
+⚠️ Include ALL {total_fixes} fixes below — one entry per fix, sorted by priority_score descending.
 
 ### {rank}. [{priority_level}] {fix_title}
 
@@ -160,14 +182,14 @@ For each fix (sorted highest first):
 - **Affected Hosts:** {affected_hosts}
 - **Priority Score:** {priority_score}
 - **Kenna Score:** {kenna_score} | **CVSS:** {cvss}
-- **Exploit Known:** {Yes/No}
+- **Exploit Known:** {Yes / No}
 - **Action Required:** Create Jira Ticket
 - **Change Window:** {Required / Not Required}
 - **Confidence:** {confidence as %}
 
-Provide a 1–2 sentence justification referencing ONLY:
-kenna_score, cvss, exploit_known, affected_hosts, and environment (sampled).
-Do not introduce external technical details.
+{justification — MUST follow the mandatory template above}
+
+[Repeat for every fix]
 
 ---
 
@@ -181,31 +203,28 @@ Tickets will be created and assigned to:
 
 ## Governance Notes
 
-- Total affected hosts (all fixes): use affected_hosts sums
-- Production systems affected: reference sampled assets only
-- Change windows required: {count} fix(es)
-- Active exploits detected: {count} fix(es)
-- High-confidence urgent items (confidence >= 0.9): {list or "None"}
-
-Avoid speculative operational advice.
+- **Total affected hosts (sum across all fixes):** {sum of all affected_hosts}
+- **Production systems affected:** {count of fixes with at least one production asset sampled}
+- **Change windows required:** {count} fix(es) — list titles
+- **Active exploits detected:** {count} fix(es) — list titles
+- **High-confidence urgent items (confidence >= 0.90):** {list fix titles or "None"}
 
 ---
 
 ## Action Packet (Phase 1 / Future AAP)
 
-Generate the following Action Packet entries for each **High** and **Medium** fix. This section must contain ACTION PACKET ENTRIES (not instructions).
-
-For each eligible fix, output exactly this structure:
+⚠️ Generate one Action Packet entry for EVERY High and Medium fix.
+Count High + Medium fixes first, confirm that many entries follow.
 
 ### Action Packet — {fix_title}
 
 - **Recommended Immediate Action (Phase 1):** Create Jira Ticket
-- **Ticket Summary:** {one-line summary for Jira}
+- **Ticket Summary:** {specific one-line summary referencing the technology and risk — not generic}
 - **Owner Group:** {owner_group}
 - **Priority Level:** {priority_level}
-- **Change Window Required:** {true/false}
+- **Change Window Required:** {true / false}
 - **Evidence (from input only):** kenna_score={kenna_score}, cvss={cvss}, exploit_known={true/false}, affected_hosts={affected_hosts}
-- **Verification (Read-only):** {1 sentence; do not provide commands unless present in input}
+- **Verification (Read-only):** {1 sentence referencing a specific check implied by the data — no invented commands}
 - **Future Automation Hook (Phase 2):** AAP Job Template: <TBD>
 
-If any field is missing in input, write `Unknown` for that field and state that the ticket owner must confirm.
+[Repeat for every High and Medium fix]
