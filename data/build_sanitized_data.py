@@ -35,8 +35,8 @@ DATA_DIR   = Path(__file__).parent          # …/data/
 ROOT_DIR   = DATA_DIR.parent               # project root
 
 SALT       = "uconn-class-salt-change-this"  # Keep private locally
-TOP_FIXES          = 10
-MAX_ASSETS_PER_FIX =  8
+TOP_FIXES          = 20   # more fixes = richer dataset for professor
+MAX_ASSETS_PER_FIX = 15   # more assets = better env/criticality representation
 
 
 # ---------------------------------------------------------------------------
