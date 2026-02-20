@@ -197,6 +197,13 @@ def node_reason_llm(state: AgentState) -> AgentState:
 
     system_prompt = _load(state.prompt_path)
     user_payload  = state.kenna_input.model_dump()
+
+    # Trim assets per fix to avoid token limits (affected_hosts count stays accurate)
+    max_assets = int(os.getenv("MAX_ASSETS_PER_FIX", "15"))
+    for fix in user_payload["fixes"]:
+        if len(fix["assets"]) > max_assets:
+            fix["assets"] = fix["assets"][:max_assets]
+
     user_prompt   = "INPUT_JSON:\n" + json.dumps(user_payload, indent=2)
 
     model_name    = os.getenv("OPENAI_MODEL", "gpt-4o")
