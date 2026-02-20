@@ -160,6 +160,36 @@ def _send_email(
         s.send_message(msg)
 
 
+def _preflight_paths(input_path: str, prompt_path: str) -> None:
+    """Fail fast with clear messages so the project runs on the professor's machine."""
+    missing: List[str] = []
+    if not os.path.exists(input_path):
+        missing.append(f"Missing input file: {input_path}")
+    if not os.path.exists(prompt_path):
+        missing.append(f"Missing prompt file: {prompt_path}")
+    if missing:
+        msg = "\n".join(missing)
+        msg += "\n\nExpected repo layout:\n"
+        msg += "  - data/kenna_input_sanitized.json\n"
+        msg += "  - prompt_template.md\n"
+        msg += "\nTip: set KENNA_INPUT_PATH and PROMPT_PATH in .env (see .env.example).\n"
+        raise RuntimeError(msg)
+
+
+def _email_config_summary() -> Dict[str, Any]:
+    """Return a safe summary (no secrets) for audit/debug."""
+    recipients_env = os.getenv("REPORT_RECIPIENTS", "").strip()
+    return {
+        "SMTP_HOST": os.getenv("SMTP_HOST", "").strip() or None,
+        "SMTP_PORT": int(os.getenv("SMTP_PORT", "25")),
+        "SMTP_STARTTLS": os.getenv("SMTP_STARTTLS", "0"),
+        "REPORT_SENDER": os.getenv("REPORT_SENDER", "").strip() or None,
+        "REPORT_RECIPIENTS_SET": bool(recipients_env),
+        "SMTP_AUTH_SET": bool(os.getenv("SMTP_USER")) and bool(os.getenv("SMTP_PASS")),
+        "EMAIL_DRY_RUN": os.getenv("EMAIL_DRY_RUN", "1"),
+    }
+
+
 # ---------------------------------------------------------------------------
 # Node 1 — OBSERVE  (load & validate input)
 # ---------------------------------------------------------------------------
@@ -280,7 +310,9 @@ def node_act(state: AgentState) -> AgentState:
     smtp_host      = os.getenv("SMTP_HOST",          "").strip()
     sender         = os.getenv("REPORT_SENDER",       "").strip()
 
-    if recipients_env and smtp_host and sender:
+    dry_run = os.getenv("EMAIL_DRY_RUN", "1") == "1"
+
+    if recipients_env and smtp_host and sender and not dry_run:
         recipients = [r.strip() for r in recipients_env.split(",") if r.strip()]
         subject    = (
             f"[Kenna Agent] Remediation Report — "
@@ -302,7 +334,8 @@ def node_act(state: AgentState) -> AgentState:
         except Exception as exc:
             state.audit.append({"step": "email_failed", "ts": _now(), "error": str(exc)})
     else:
-        state.audit.append({"step": "email_skipped", "ts": _now(), "reason": "SMTP not configured"})
+        reason = "EMAIL_DRY_RUN=1" if dry_run else "SMTP not configured"
+        state.audit.append({"step": "email_skipped", "ts": _now(), "reason": reason})
 
     # Write final audit (with email step recorded)
     _save_json("outputs/audit_log.json", state.audit)
@@ -338,10 +371,13 @@ def main() -> None:
     input_path  = os.getenv("KENNA_INPUT_PATH", default_input)
     prompt_path = os.getenv("PROMPT_PATH",      "prompt_template.md")
 
+    _preflight_paths(input_path=input_path, prompt_path=prompt_path)
+
     source_label = "⚠️  REAL DATA" if input_path == real_input else "✅ sanitized"
     print(f"   Input  : {input_path}  [{source_label}]")
     print(f"   Prompt : {prompt_path}")
     print(f"   Model  : {os.getenv('OPENAI_MODEL', 'gpt-4o')}")
+    print(f"   Email  : {_email_config_summary()}")
     print()
 
     graph = build_graph()
