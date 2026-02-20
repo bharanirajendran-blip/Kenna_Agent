@@ -14,9 +14,10 @@ outputs/*
 !outputs/.gitkeep
 *.log
 
-# ---- Real Kenna CSV exports (keep sanitized JSON, ignore raw CSVs) ----
+# ---- Real Kenna data (keep sanitized JSON, ignore raw exports and real input) ----
 data/*_export_*.csv
 data/*.xlsx
+data/kenna_input.json
 
 # ---- Python ----
 __pycache__/
