@@ -1,0 +1,32 @@
+# ---- Secrets ----
+.env
+*.key
+*.pem
+
+# ---- Virtual environments ----
+venv/
+.venv/
+env/
+ENV/
+
+# ---- Outputs (generated, not committed) ----
+outputs/*
+!outputs/.gitkeep
+*.log
+
+# ---- Real Kenna CSV exports (keep sanitized JSON, ignore raw CSVs) ----
+data/*_export_*.csv
+data/*.xlsx
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
