@@ -30,6 +30,12 @@ from langgraph.graph import END, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
 
 try:
+    from agent.input_source import (
+        default_csv_input_path,
+        load_kenna_payload,
+        resolve_source_mode,
+        source_descriptor,
+    )
     from agent.policy_engine import PolicyComputationResult, compute_policy
     from agent.report_builder import NarrativeFragments, build_report
     from agent.validators import (
@@ -39,6 +45,12 @@ try:
     )
 except ModuleNotFoundError:
     # Supports running as: python agent/run_agent.py
+    from input_source import (
+        default_csv_input_path,
+        load_kenna_payload,
+        resolve_source_mode,
+        source_descriptor,
+    )
     from policy_engine import PolicyComputationResult, compute_policy
     from report_builder import NarrativeFragments, build_report
     from validators import ValidationViolation, validate_report_markdown, validate_structured_payload
@@ -119,6 +131,7 @@ class AgentState(BaseModel):
 
     input_path: str
     prompt_path: str
+    source_mode: Literal["csv", "api"] = "csv"
 
     kenna_input: Optional[KennaInput] = None
     policy_result: Optional[PolicyComputationResult] = None
@@ -333,15 +346,16 @@ def _audit_tool_call(
 # ---------------------------------------------------------------------------
 def node_observe(state: AgentState) -> AgentState:
     state.audit.append({"step": "observe_start", "ts": _now(), "path": state.input_path})
-
-    raw = _load(state.input_path)
-    payload = json.loads(raw)
+    loaded = load_kenna_payload(mode=state.source_mode, csv_input_path=state.input_path)
+    payload = loaded.payload
     state.kenna_input = KennaInput.model_validate(payload)
 
     state.audit.append(
         {
             "step": "observe_done",
             "ts": _now(),
+            "source_mode": state.source_mode,
+            "source_descriptor": loaded.descriptor,
             "asset_group": state.kenna_input.asset_group,
             "fixes_loaded": len(state.kenna_input.fixes),
         }
@@ -642,21 +656,29 @@ def main() -> None:
 
     real_input = "data/kenna_input.json"
     sanitized_input = "data/kenna_input_sanitized.json"
-    default_input = real_input if os.path.exists(real_input) else sanitized_input
+    source_mode = resolve_source_mode()
+    default_input = default_csv_input_path(real_input=real_input, sanitized_input=sanitized_input)
     input_path = os.getenv("KENNA_INPUT_PATH", default_input)
     prompt_path = os.getenv("PROMPT_PATH", "prompt_template.md")
 
-    _preflight_paths(input_path=input_path, prompt_path=prompt_path)
+    if source_mode == "csv":
+        _preflight_paths(input_path=input_path, prompt_path=prompt_path)
+    else:
+        if not os.path.exists(prompt_path):
+            raise RuntimeError(f"Missing prompt file: {prompt_path}")
 
     source_label = "⚠️  REAL DATA" if input_path == real_input else "✅ sanitized"
-    print(f"   Input  : {input_path}  [{source_label}]")
+    if source_mode == "api":
+        source_label = "🌐 API"
+    print(f"   Source : {source_mode}")
+    print(f"   Input  : {source_descriptor(source_mode, input_path)}  [{source_label}]")
     print(f"   Prompt : {prompt_path}")
     print(f"   Model  : {os.getenv('OPENAI_MODEL', 'gpt-4o')}")
     print(f"   Email  : {_email_config_summary()}")
     print()
 
     graph = build_graph()
-    init = AgentState(input_path=input_path, prompt_path=prompt_path)
+    init = AgentState(input_path=input_path, prompt_path=prompt_path, source_mode=source_mode)
 
     try:
         graph.invoke(init)

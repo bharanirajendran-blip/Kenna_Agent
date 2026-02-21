@@ -24,11 +24,11 @@ Each step is logged in `outputs/audit_log.json` as `reason_tool_call`.
 
 ## Architecture
 ```text
-OBSERVE                        REASON (ReAct loop)                      ACT
-Load + validate input JSON  -> Tool steps + retry/repair loop       -> Write outputs
-Deterministic policy compute    LLM narrative only                      report.md
-                                Strict compliance checks                structured.json
-                                                                          audit_log.json
+OBSERVE                              REASON (ReAct loop)                      ACT
+Load + validate input source      -> Tool steps + retry/repair loop       -> Write outputs
+(csv JSON or API normalized JSON)    LLM narrative only                      report.md
+Deterministic policy compute          Strict compliance checks                structured.json
+                                                                                audit_log.json
 ```
 
 ## Deterministic Policy Ownership
@@ -78,7 +78,11 @@ cat outputs/audit_log.json
 ```
 
 ## Data Inputs
-The agent reads Kenna input JSON.
+The agent supports two source modes:
+- `KENNA_SOURCE=csv` (default): reads normalized Kenna input JSON from `KENNA_INPUT_PATH`.
+- `KENNA_SOURCE=api`: fetches normalized JSON from `KENNA_API_NORMALIZED_URL` using `X-Risk-Token`.
+
+In both modes, downstream policy/report logic uses the same normalized schema.
 
 Default input selection:
 - `data/kenna_input.json` if present (real data)
@@ -107,6 +111,7 @@ kenna-agent/
 ├── prompt_template.md
 ├── requirements.txt
 ├── agent/
+│   ├── input_source.py
 │   ├── run_agent.py
 │   ├── policy_engine.py
 │   ├── report_builder.py
@@ -128,7 +133,12 @@ kenna-agent/
 | `OPENAI_API_KEY` | required | OpenAI API key |
 | `OPENAI_MODEL` | `gpt-4o` | model for narrative generation |
 | `OPENAI_TEMPERATURE` | `0.1` | narrative variability |
+| `KENNA_SOURCE` | `csv` | input source mode (`csv` or `api`) |
 | `KENNA_INPUT_PATH` | auto-detected | input JSON path |
+| `KENNA_API_NORMALIZED_URL` | unset | API endpoint returning normalized JSON |
+| `KENNA_API_TOKEN` | unset | Kenna API token for `X-Risk-Token` header |
+| `KENNA_API_TIMEOUT` | `20` | API request timeout in seconds |
+| `KENNA_API_SNAPSHOT_PATH` | unset | offline API simulation JSON path |
 | `PROMPT_PATH` | `prompt_template.md` | narrative prompt path |
 | `LLM_RETRY_ATTEMPTS` | `3` | bounded repair retries |
 | `REACT_MAX_STEPS` | `8` | max tool steps per reason attempt |
